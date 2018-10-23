@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Assignment</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+  <form onSubmit = "return validation()" >
+    
+    <input type="text" placeholder="username"  name="username"  id="username" ><br>
+      <span id="usererror" class="text-danger" ></span><br>
+      <span id="uservaild" class="text-danger" ></span><br>
+      <input type="text" placeholder="password" name="password"  id="password" ><br>
+      <span id="passwordvaild" class="text-danger" ></span><br>
+      <span id="passworderror" class="text-danger" ></span><br>
+
+      <input type="submit" value="submit">
+  </form>
+  
+  <script>
+      
+      function validation(){
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var userCheck = /^[A-Za-z.]{6}$/;
+        var data =username.slice(0,1);
+        var data2 = username.slice(1);
+        var final = data.toUpperCase().concat(data2)
+      
+      var passwordCheck =/^(?=.*[0-9])[a-zA-Z0-9]{6,12}$/ ;
+
+      if(userCheck.test(final)){
+        document.getElementById('usererror').style.visibility="hidden";    
+        document.getElementById('uservaild').style.visibility="initial";    
+
+        document.getElementById('uservaild').innerHTML="valid name";
+
+      }else{
+        document.getElementById('uservaild').style.visibility="hidden";    
+        document.getElementById('usererror').style.visibility="initial";    
+        
+        document.getElementById('usererror').innerHTML="** name unvalid";
+
+        return false;
+
+      }
+
+      if(passwordCheck.test(password)){
+        document.getElementById('passworderror').style.visibility="hidden";    
+        document.getElementById('passwordvaild').style.visibility="initial";
+        
+        document.getElementById('passwordvaild').innerHTML= "password valid";
+
+      }
+
+      else {
+        document.getElementById('passwordvaild').style.visibility="hidden";    
+        document.getElementById('passworderror').style.visibility="initial";    
+        
+        document.getElementById('passworderror').innerHTML = " ** password unvalid";
+
+        return false;
+
+      }
+
+
+
+    }
+
+  </script>
+
+</body>
+
+</html>
+
